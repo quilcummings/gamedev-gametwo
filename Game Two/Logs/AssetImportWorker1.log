@@ -182,3 +182,4 @@ Received Import Request.
   path: Assets/Sprites/monsterMASH.png
   artifactKey: Guid(1d2a31b9f5b374459b4728622c9d0932) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Sprites/monsterMASH.png using Guid(1d2a31b9f5b374459b4728622c9d0932) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '097e27935004cd023ce4dbbc31fc4186') in 1.250267 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

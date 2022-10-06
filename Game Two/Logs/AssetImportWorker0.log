@@ -212,3 +212,4 @@ Received Import Request.
   path: Assets/Animations
   artifactKey: Guid(aab638922c69142eab14aadd7c310b8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Animations using Guid(aab638922c69142eab14aadd7c310b8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc2fe3efec488c05c902efabb807483f') in 0.001001 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
