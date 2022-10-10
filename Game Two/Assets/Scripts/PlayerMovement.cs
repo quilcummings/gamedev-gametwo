@@ -7,15 +7,12 @@ public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement Instance;
     
-    //public Transform transfo;
     public Animator animator;
     public Rigidbody2D rb;
-
-    private float startTime;
-    private float journeyLength;
-
-    private Vector3 destination;
+    
     public float runSpeed = 3f;
+
+    public GameObject background;
 
     void Awake()
     {
@@ -29,19 +26,22 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+       
+        
+        if (Input.GetKey(KeyCode.D))
         {
-            destination = new Vector3(rb.position.x + 5, 0, 0);
             animator.SetBool("isMoving", true);
-            StartCoroutine(Move(4f));
+            
+            Vector2 moveForce = new Vector2(.05f, 0);
+            rb.AddForce(moveForce, ForceMode2D.Impulse);
+            
+            float maxSpeed = 10;
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         }
         if (Input.GetKeyUp(KeyCode.D))
         {
             animator.SetBool("isMoving", false);
-            StopAllCoroutines();
         }
-
-        
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             animator.SetBool("isDashing", true);
@@ -52,22 +52,13 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Vector2 upForce = new Vector2(3, 7);
+            rb.AddForce(upForce, ForceMode2D.Impulse);
             animator.SetBool("isJumping", true);
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
             animator.SetBool("isJumping", false);
-        }
-    }
-
-    IEnumerator Move(float time)
-    {
-        float timeElap = 0;
-        while (timeElap < time)
-        {
-            rb.position = Vector2.Lerp(rb.position, destination, timeElap / time);
-            timeElap += Time.deltaTime;
-            yield return null;
         }
     }
 }
