@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2363690241284999356}
   - component: {fileID: 2363690241284999330}
   - component: {fileID: 968633404150346287}
+  - component: {fileID: 6451206012674748587}
   m_Layer: 0
   m_Name: rock-1
   m_TagString: Untagged
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2017113241
-  m_SortingLayer: 5
+  m_SortingLayerID: -1638979759
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3d0e86a29139941a6a96f34a61d43814, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.034041286, y: -0.37000373}
+  m_Offset: {x: 0.00056374073, y: -0.33652642}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5985839, y: 0.295124}
+  m_Size: {x: 1.665539, y: 0.22816938}
   m_EdgeRadius: 0
 --- !u!61 &968633404150346287
 BoxCollider2D:
@@ -138,3 +139,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1447015, y: 0.89397275}
   m_EdgeRadius: 0
+--- !u!50 &6451206012674748587
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2363690241284999358}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

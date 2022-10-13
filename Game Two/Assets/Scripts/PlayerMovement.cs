@@ -22,12 +22,12 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && animator.GetBool("isDashing") == false)
         {
             animator.SetBool("isMoving", true);
             
@@ -45,10 +45,10 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isDashing", true);
             
-            Vector2 dashForce = new Vector2(1f, 0);
+            Vector2 dashForce = new Vector2(20f, 0);
             rb.AddForce(dashForce, ForceMode2D.Impulse);
             
-            float maxSpeed = 20;
+            float maxSpeed = 50;
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))

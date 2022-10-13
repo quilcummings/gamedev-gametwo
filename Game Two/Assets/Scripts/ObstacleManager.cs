@@ -14,17 +14,10 @@ public class ObstacleManager : MonoBehaviour
 
     private GameObject player;
     
-    // Start is called before the first frame update
     void Start()
     {
         player = PlayerMovement.Instance.player;
         StartCoroutine(DeployRock());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     
     IEnumerator DeployRock()
@@ -32,11 +25,38 @@ public class ObstacleManager : MonoBehaviour
         while (true)
         {   
             rock1 = GameObject.Instantiate(rock1PF);
-            rock1.transform.position = new Vector3(player.transform.position.x + Random.Range(50, 100), -4.5f, 0);
+            rock2 = GameObject.Instantiate(rock2PF);
+            rock3 = GameObject.Instantiate(rock3PF);
+
+            float playerXPos = player.transform.position.x;
+
+            float rock1Pos = playerXPos + Random.Range(10, 25);
+            float rock2Pos = playerXPos + Random.Range(10, 25);
+            if (rock2Pos >= rock1Pos - 5 && rock2Pos <= rock1Pos + 5)
+            {
+                rock2Pos += 5;
+            }
+            float rock3Pos = playerXPos + Random.Range(50, 100);
+            if (rock3Pos >= rock2Pos - 5 && rock3Pos <= rock2Pos + 5)
+            {
+                rock3Pos += 5;
+            }
+
+            rock1.transform.position = new Vector3(rock1Pos, -4.6f, 0);
+            rock2.transform.position = new Vector3(rock2Pos, -4.5f, 0);
+            rock3.transform.position = new Vector3(rock3Pos, -4.5f, 0);
 
             if (player.transform.position.x > rock1.transform.position.x + 10)
             {
                 Destroy(rock1);
+            }
+            if (player.transform.position.x > rock2.transform.position.x + 10)
+            {
+                Destroy(rock2);
+            }
+            if (player.transform.position.x > rock3.transform.position.x + 10)
+            {
+                Destroy(rock3);
             }
             yield return new WaitForSeconds(5f);
         }

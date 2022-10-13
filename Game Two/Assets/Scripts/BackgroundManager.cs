@@ -6,16 +6,17 @@ public class BackgroundManager : MonoBehaviour
 {
     public static BackgroundManager Instance;
     private Rigidbody2D rb;
-    
 
+    private Transform target;
+    
     private int bgCount = 2;
     private int match = 2;
     public float xPos;
     
-    public GameObject background;
     public GameObject ground;
-
-    private GameObject bg;
+    public GameObject ground2;
+    //public GameObject backgroundLayer;
+    
     private GameObject gr;
 
     void Awake()
@@ -25,6 +26,7 @@ public class BackgroundManager : MonoBehaviour
     void Start()
     {
         rb = PlayerMovement.Instance.rb;
+        target = PlayerMovement.Instance.player.transform;
         //StartCoroutine(makeBG());
     }
     
@@ -34,10 +36,17 @@ public class BackgroundManager : MonoBehaviour
         {
             match++;
         }
-        if (bgCount == match)
+
+        if (bgCount % 5 == 0)
         {
             xPos = 18.37f * bgCount;
-            GameObject bg = Instantiate(background, new Vector3(xPos, -1f, 0), Quaternion.identity);
+            GameObject gr = Instantiate(ground2, new Vector3(xPos, 5, 0), Quaternion.identity);
+            ground2.transform.parent = gr.transform.parent;
+            bgCount++;
+        }
+        else if (bgCount == match)
+        {
+            xPos = 18.37f * bgCount;
             GameObject gr = Instantiate(ground, new Vector3(xPos, 0, 0), Quaternion.identity);
             ground.transform.parent = gr.transform.parent;
             bgCount++;
@@ -53,14 +62,12 @@ public class BackgroundManager : MonoBehaviour
         if (bgCount == match)
         {
             xPos = 18.37f * bgCount;
-            bg = Instantiate(background, new Vector3(xPos, -1f, 0), Quaternion.identity);
             gr = Instantiate(ground, new Vector3(xPos, 0, 0), Quaternion.identity);
             ground.transform.parent = gr.transform.parent;
             bgCount++;
         }
         if (rb.position.x > xPos * 2)
         {
-            Destroy(bg);
             Destroy(gr);
         }
         yield return new WaitForSeconds(.1f);
