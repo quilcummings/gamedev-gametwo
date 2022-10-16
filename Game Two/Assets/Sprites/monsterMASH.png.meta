@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -1538,8 +1538,8 @@ TextureImporter:
       monsterMASH_6: 1193741316
       monsterMASH_60: -1108419925
       monsterMASH_40: 953107780
-      monsterMASH_62: 60711479
       monsterMASH_18: -1320979159
+      monsterMASH_62: 60711479
       monsterMASH_14: -1973573750
       monsterMASH_22: -523775059
       monsterMASH_56: 1385073489

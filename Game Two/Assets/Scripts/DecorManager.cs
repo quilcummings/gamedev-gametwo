@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DecorManager : MonoBehaviour
+public class DecorManager : WorldManager
 {
     public GameObject lampPF;
     public GameObject fencePF;
