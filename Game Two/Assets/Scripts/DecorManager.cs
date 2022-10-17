@@ -13,7 +13,7 @@ public class DecorManager : WorldManager
 
     private int count = 0;
 
-    private GameObject player;
+    //private GameObject player;
 
     void Start()
     {
@@ -33,8 +33,7 @@ public class DecorManager : WorldManager
             float fencePos = playerXPos + Random.Range(10, 25);
 
             float lampPos = fencePos + 3.71f;
-
-
+            
             lamp.transform.position = new Vector3(lampPos, -2.59f, 0);
             fence.transform.position = new Vector3(fencePos, -4.16f, 0);
 
@@ -54,8 +53,14 @@ public class DecorManager : WorldManager
                 Destroy(fence);
             }
 
-            count++;
+            //count++;
+            AddCount();
             yield return new WaitForSeconds(10f);
         }
+    }
+
+    public override void AddCount()
+    {
+        count++;
     }
 }

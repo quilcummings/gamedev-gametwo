@@ -6,8 +6,17 @@ using UnityEditor;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
+    
     public TextMeshProUGUI gameOver;
+    public TextMeshProUGUI pressE;
+    
     public GameObject black;
+
+    void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         gameOver.text = "";

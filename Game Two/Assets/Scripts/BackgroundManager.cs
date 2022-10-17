@@ -43,7 +43,8 @@ public class BackgroundManager : WorldManager
             
             GameObject plat = Instantiate(platform, new Vector3(xPos, 0, 0), Quaternion.identity);
             platform.transform.parent = plat.transform.parent;
-            bgCount++;
+            //bgCount++;
+            AddCount();
         }
         
         if (bgCount % 5 == 0)
@@ -51,15 +52,21 @@ public class BackgroundManager : WorldManager
             xPos = 18.37f * bgCount;
             GameObject gr = Instantiate(ground2, new Vector3(xPos, 5, 0), Quaternion.identity);
             ground2.transform.parent = gr.transform.parent;
-            bgCount++;
+            //bgCount++;
+            AddCount();
         }
         else if (bgCount == match)
         {
             xPos = 18.37f * bgCount;
             GameObject gr = Instantiate(ground, new Vector3(xPos, 0, 0), Quaternion.identity);
             ground.transform.parent = gr.transform.parent;
-            bgCount++;
+            //bgCount++;
+            AddCount();
         }
     }
     
+    public override void AddCount()
+    {
+        bgCount++;
+    }
 }

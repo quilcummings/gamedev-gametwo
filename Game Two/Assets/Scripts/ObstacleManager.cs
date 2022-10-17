@@ -12,7 +12,7 @@ public class ObstacleManager : WorldManager
     private GameObject rock2;
     private GameObject rock3;
 
-    private GameObject player;
+    //private GameObject player;
     
     void Start()
     {
@@ -61,4 +61,8 @@ public class ObstacleManager : WorldManager
             yield return new WaitForSeconds(5f);
         }
     }
+    
+    public override void AddCount()
+    {}
+    
 }

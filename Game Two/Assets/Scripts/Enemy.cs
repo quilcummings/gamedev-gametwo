@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Enemies
+public class Enemy : MonoBehaviour
 {
     public static Enemy Instance;
     
@@ -43,7 +43,7 @@ public class Enemy : Enemies
         }
     }
 
-    public override void Attack()
+    public void Attack()
     {
         dead = true;
         PlayerMovement.Instance.rb.velocity = new Vector2(0, 0);
