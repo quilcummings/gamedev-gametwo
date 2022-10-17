@@ -23,7 +23,9 @@ public class AttackingPlayer : StateMachineBehaviour
         Rigidbody2D rb = BatEyes.Instance.rb;
         Rigidbody2D prb = PlayerMovement.Instance.rb;
 
-        rb.transform.position = Vector3.MoveTowards(rb.transform.position, prb.transform.position, 0.05f);
+        Vector2 targ = new Vector2(prb.transform.position.x - 1f, prb.transform.position.y + 1f);
+
+        rb.transform.position = Vector3.MoveTowards(rb.transform.position, targ, 0.05f);
 
     }
 

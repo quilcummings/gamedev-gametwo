@@ -18,7 +18,6 @@ public class ChasePlayer : StateMachineBehaviour
         float distance = Vector2.Distance(PlayerMovement.Instance.transform.position, Enemy.Instance.transform.position);
         animator.SetFloat("DistanceToPlayer", distance);
         
-        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

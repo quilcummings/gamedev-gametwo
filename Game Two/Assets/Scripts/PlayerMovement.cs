@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
     }
     
     void Update()
@@ -40,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.D))
         {
             animator.SetBool("isMoving", false);
+            rb.velocity = new Vector2(0, 0);
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             animator.SetBool("isDashing", false);
+            rb.velocity = new Vector2(0, 0);
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleManager : MonoBehaviour
+public class ObstacleManager : WorldManager
 {
     public GameObject rock1PF;
     public GameObject rock2PF;

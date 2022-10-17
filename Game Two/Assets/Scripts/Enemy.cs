@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,9 @@ public class Enemy : Enemies
     private Rigidbody2D rb;
     private GameObject player;
     
-    [SerializeField] int speed = 10;
+    public bool dead = false;
+    
+    [SerializeField] int speed = 15;
 
     void Awake()
     {
@@ -34,6 +37,7 @@ public class Enemy : Enemies
         }
         else
         {
+            dead = false;
             Vector2 targ = new Vector2(player.transform.position.x, -3.03f);
             monster.transform.position = Vector2.MoveTowards(monster.transform.position, targ, speed * Time.deltaTime);
         }
@@ -41,7 +45,8 @@ public class Enemy : Enemies
 
     public override void Attack()
     {
-        // stop to attack
-        // stun player (pause movement)
+        dead = true;
+        PlayerMovement.Instance.rb.velocity = new Vector2(0, 0);
     }
+    
 }

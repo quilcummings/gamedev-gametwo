@@ -21,6 +21,7 @@ public class BatEyes : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        player = PlayerMovement.Instance.player.transform;
     }
     void Update()
     {
@@ -52,7 +53,7 @@ public class BatEyes : MonoBehaviour
             pow = true;
         }
     }
-
+    
     IEnumerator RandomMovement(float time)
     {
         while (true)
@@ -60,7 +61,7 @@ public class BatEyes : MonoBehaviour
             float curTime = 0;
          
             Vector3 startPos = rb.transform.position;
-            var position = new Vector3(Random.Range(player.position.x - 2.0f, player.position.x +3.0f), Random.Range(2.0f, 3.0f));
+            var position = new Vector3(Random.Range(player.position.x - 2.0f, player.position.x + 3.0f), Random.Range(2.0f, 3.0f));
             
             while (curTime < time)
             {

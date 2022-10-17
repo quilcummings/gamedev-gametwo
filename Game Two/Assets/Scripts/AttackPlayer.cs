@@ -13,8 +13,8 @@ public class AttackPlayer : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-         float distance = Vector2.Distance(PlayerMovement.Instance.transform.position, BatEyes.Instance.transform.position);
-            animator.SetFloat("DistanceToPlayer", distance);
+         float distance = Vector2.Distance(PlayerMovement.Instance.transform.position, Enemy.Instance.transform.position);
+         animator.SetFloat("DistanceToPlayer", distance);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
