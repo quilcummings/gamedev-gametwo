@@ -10,4 +10,5 @@ public abstract class WorldManager : MonoBehaviour
     public GameObject player;
     
     public abstract void AddCount();
+    
 }

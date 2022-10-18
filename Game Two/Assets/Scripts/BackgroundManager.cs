@@ -13,9 +13,11 @@ public class BackgroundManager : WorldManager
     public GameObject ground;
     public GameObject ground2;
     public GameObject platform;
+    //public GameObject block;
 
     private GameObject gr;
     private GameObject plat;
+    //private GameObject blocked;
 
     void Awake()
     {
@@ -45,6 +47,15 @@ public class BackgroundManager : WorldManager
             platform.transform.parent = plat.transform.parent;
             //bgCount++;
             AddCount();
+        }
+        
+        //if (bgCount % 7 == 0)
+        {
+          //  xPos = 18.37f * bgCount;
+           // GameObject blocked = Instantiate(block, new Vector3(xPos, 0, 0), Quaternion.identity);
+            //blocked.transform.parent = block.transform.parent;
+           
+            //AddCount();
         }
         
         if (bgCount % 5 == 0)

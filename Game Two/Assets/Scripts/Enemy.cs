@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     private GameObject player;
     
     public bool dead = false;
+    public bool start = false;
     
     [SerializeField] int speed = 15;
 
@@ -31,16 +32,25 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (animator.GetFloat("DistanceToPlayer") <= 5)
+        if (Input.GetMouseButtonDown(0) && !start)
         {
-            Attack();
+            start = true;
         }
-        else
+
+        if (start)
         {
-            dead = false;
-            Vector2 targ = new Vector2(player.transform.position.x, -3.03f);
-            monster.transform.position = Vector2.MoveTowards(monster.transform.position, targ, speed * Time.deltaTime);
+            if (animator.GetFloat("DistanceToPlayer") <= 5)
+            {
+                Attack();
+            }
+            else
+            {
+                dead = false;
+                Vector2 targ = new Vector2(player.transform.position.x, -3.03f);
+                monster.transform.position = Vector2.MoveTowards(monster.transform.position, targ, speed * Time.deltaTime);
+            }
         }
+       
     }
 
     public void Attack()

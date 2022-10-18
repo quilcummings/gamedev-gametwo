@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 501a89f5b94654d0cb7a314cca97345d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Slimespooky Outline
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: eeab8e74d6ccd4d2ba873c38b597f1af, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

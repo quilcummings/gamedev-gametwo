@@ -33,6 +33,7 @@ public class PowerupManager : WorldManager
                 AddCount();
             }
             
+
             float playerXPos = player.transform.position.x;
             float diamondPos = playerXPos + Random.Range(10, 25);
             
@@ -46,7 +47,6 @@ public class PowerupManager : WorldManager
                 count--;
             }
 
-            
             yield return new WaitForSeconds(5f);
         }
     }
@@ -55,6 +55,5 @@ public class PowerupManager : WorldManager
     {
         count++;
     }
-    
     
 }

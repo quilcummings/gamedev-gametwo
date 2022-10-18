@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     
     public TextMeshProUGUI gameOver;
     public TextMeshProUGUI pressE;
+    public TextMeshProUGUI batDia;
+    public TextMeshProUGUI click;
     
     public GameObject black;
 
@@ -25,7 +27,19 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         //Debug.Log(Enemy.Instance.dead);
-        if (Enemy.Instance.dead)
+
+        if (BatEyes.Instance.displayText)
+        {
+            batDia.text = "Do you hear that? Sounds like trouble! Press shift to run and space to skip. Now... GO";
+            click.text = "Click to begin chase";
+        }
+
+        if (Enemy.Instance.start)
+        {
+            batDia.text = "";
+            click.text = "";
+        }
+        if (Enemy.Instance.dead || PlayerMovement.Instance.player.transform.position.y >= 5)
         {
             black.SetActive(true);
             gameOver.text = "DEATH: INEVITABLE YET UNEXPECTED";

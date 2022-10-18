@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Mono.Cecil.Cil;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -31,9 +32,14 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //Debug.Log(time);
-        
-        Debug.Log(time);
-        
+
+        if (Input.GetMouseButtonDown(0) && Enemy.Instance.dead)
+        {
+            Enemy.Instance.dead = false;
+            Scene scene = SceneManager.GetActiveScene(); 
+            SceneManager.LoadScene(scene.name);
+        }
+
         if (Boost.Instance.check)
         {
             GetComponent<SpriteRenderer>().color = new Color(.52f, .82f, .97f);
@@ -45,72 +51,86 @@ public class PlayerMovement : MonoBehaviour
             time = 0;
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
         }
+
+        if (Enemy.Instance.start)
+        {
+            if (Input.GetKey(KeyCode.D) && animator.GetBool("isDashing") == false)
+            {
+                animator.SetBool("isMoving", true);
+            
+                if (!Boost.Instance.check)
+                {
+                    Vector2 moveForce = new Vector2(.1f, 0);
+                    rb.AddForce(moveForce, ForceMode2D.Impulse);
+                
+                    float maxSpeed = 10;
+                    
+                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+                }
+                else
+                {
+                    Vector2 moveForce = new Vector2(1f, 0);
+                    rb.AddForce(moveForce, ForceMode2D.Impulse);
+                
+                    float maxSpeed = 50;
+                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+                }
+            } 
+            if (Input.GetKeyUp(KeyCode.D))
+            {
+                animator.SetBool("isMoving", false);
+                rb.velocity = new Vector2(0, 0);
+            }
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                animator.SetBool("isDashing", true);
+            
+            
+                if (!Boost.Instance.check)
+                {
+                    Vector2 dashForce = new Vector2(20f, 0);
+                    rb.AddForce(dashForce, ForceMode2D.Impulse);
+                
+                    float maxSpeed = 50;
+                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+                }
+                else
+                {
+                    Vector2 dashForce = new Vector2(40f, 0);
+                    rb.AddForce(dashForce, ForceMode2D.Impulse);
+                
+                    float maxSpeed = 100;
+                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+                }
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                animator.SetBool("isDashing", false);
+                rb.velocity = new Vector2(0, 0);
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (!Boost.Instance.check)
+                {
+                    Vector2 upForce = new Vector2(3, 10);
+                    rb.AddForce(upForce, ForceMode2D.Impulse);
+                    animator.SetBool("isJumping", true);
+                }
+                else
+                {
+                    Vector2 upForce = new Vector2(5, 10);
+                    rb.AddForce(upForce, ForceMode2D.Impulse);
+                    animator.SetBool("isJumping", true);
+                }
+            }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                animator.SetBool("isJumping", false);
+            }
+        }
         
         
-        if (Input.GetKey(KeyCode.D) && animator.GetBool("isDashing") == false)
-        {
-            animator.SetBool("isMoving", true);
-            
-           if (!Boost.Instance.check)
-            {
-                Vector2 moveForce = new Vector2(.1f, 0);
-                rb.AddForce(moveForce, ForceMode2D.Impulse);
-                
-                float maxSpeed = 10;
-                Debug.Log("MAX: " + maxSpeed);
-                rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
-            }
-            else
-            {
-                Vector2 moveForce = new Vector2(1f, 0);
-                rb.AddForce(moveForce, ForceMode2D.Impulse);
-                
-                float maxSpeed = 50;
-                Debug.Log("MAX: " + maxSpeed);
-                rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
-            }
-        }
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            animator.SetBool("isMoving", false);
-            rb.velocity = new Vector2(0, 0);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            animator.SetBool("isDashing", true);
-            
-            if (!Boost.Instance.check)
-            {
-                Vector2 dashForce = new Vector2(20f, 0);
-                rb.AddForce(dashForce, ForceMode2D.Impulse);
-                
-                float maxSpeed = 50;
-                rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
-            }
-            else
-            {
-                Vector2 dashForce = new Vector2(40f, 0);
-                rb.AddForce(dashForce, ForceMode2D.Impulse);
-                
-                float maxSpeed = 100;
-                rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
-            }
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            animator.SetBool("isDashing", false);
-            rb.velocity = new Vector2(0, 0);
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Vector2 upForce = new Vector2(3, 10);
-            rb.AddForce(upForce, ForceMode2D.Impulse);
-            animator.SetBool("isJumping", true);
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            animator.SetBool("isJumping", false);
-        }
     }
+  
     
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BatEyes : MonoBehaviour
@@ -12,6 +13,8 @@ public class BatEyes : MonoBehaviour
 
     public bool pow = true;
     public float mod = 0.5f;
+
+    public bool displayText;
     
     void Awake()
     {
@@ -28,6 +31,13 @@ public class BatEyes : MonoBehaviour
 
         Ray2D eyes = new Ray2D(transform.position, player.position - transform.position);
         Debug.DrawRay(transform.position, player.position - transform.position);
+
+        float distance = Vector2.Distance(PlayerMovement.Instance.transform.position, transform.position);
+
+        if (distance <= 2)
+        {
+            displayText = true;
+        }
         
         RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position - transform.position, 100f);
         if (hit && hit.collider.gameObject.tag == "Player")

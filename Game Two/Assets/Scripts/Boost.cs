@@ -41,6 +41,5 @@ public class Boost : MonoBehaviour
             time = 0;
         }
     }
-    
-    
+
 }
