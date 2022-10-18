@@ -11,4 +11,5 @@ public abstract class WorldManager : MonoBehaviour
     
     public abstract void AddCount();
     
+    
 }

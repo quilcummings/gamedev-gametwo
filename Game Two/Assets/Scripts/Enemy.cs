@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !start)
         {
             start = true;
+            StartCoroutine(increaseSpeed());
         }
 
         if (start)
@@ -59,4 +60,12 @@ public class Enemy : MonoBehaviour
         PlayerMovement.Instance.rb.velocity = new Vector2(0, 0);
     }
     
+    IEnumerator increaseSpeed()
+    {
+        while(true)
+        {
+            speed++;
+            yield return new WaitForSeconds(2);
+        }
+    }
 }

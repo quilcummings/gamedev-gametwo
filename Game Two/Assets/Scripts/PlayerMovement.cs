@@ -5,20 +5,30 @@ using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : WorldManager
 {
     public static PlayerMovement Instance;
     
     public Animator animator;
     public Animator animator2;
-    public Rigidbody2D rb;
-    public GameObject player;
+    //public Rigidbody2D rb;
+    //public GameObject player;
 
     public float runSpeed = 3f;
 
     public GameObject background;
 
     private float time;
+    public float score;
+
+    public bool check;
+    private bool pow=true;
+
+    public AudioSource aud;
+    public AudioClip sound;
+
+
+    
 
     void Awake()
     {
@@ -31,23 +41,30 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-        //Debug.Log(time);
+        
 
+        if (Enemy.Instance.start && pow)
+        {
+            StartCoroutine(AddScore());
+            pow=false;
+        }
         if (Input.GetMouseButtonDown(0) && Enemy.Instance.dead)
         {
             Enemy.Instance.dead = false;
             Scene scene = SceneManager.GetActiveScene(); 
-            SceneManager.LoadScene(scene.name);
+            SceneManager.LoadScene("Load Screen", LoadSceneMode.Single);
         }
-
-        if (Boost.Instance.check)
+        
+        if (check)
         {
             GetComponent<SpriteRenderer>().color = new Color(.52f, .82f, .97f);
             time += Time.deltaTime;
+            AddCount();
         }
         if (time > 5)
         {
-            Boost.Instance.check = false;
+            check = false;
+            //once = true;
             time = 0;
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
         }
@@ -58,13 +75,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetBool("isMoving", true);
             
-                if (!Boost.Instance.check)
+                if (!check)
                 {
                     Vector2 moveForce = new Vector2(.1f, 0);
                     rb.AddForce(moveForce, ForceMode2D.Impulse);
                 
                     float maxSpeed = 10;
-                    
                     rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
                 }
                 else
@@ -76,7 +92,33 @@ public class PlayerMovement : MonoBehaviour
                     rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
                 }
             } 
+            if (Input.GetKey(KeyCode.A) && animator.GetBool("isDashing") == false)
+            {
+                animator.SetBool("isMoving", true);
+            
+                if (!check)
+                {
+                    Vector2 moveForce = new Vector2(-.1f, 0);
+                    rb.AddForce(moveForce, ForceMode2D.Impulse);
+                
+                    float maxSpeed = 10;
+                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+                }
+                else
+                {
+                    Vector2 moveForce = new Vector2(-1f, 0);
+                    rb.AddForce(moveForce, ForceMode2D.Impulse);
+                
+                    float maxSpeed = 50;
+                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+                }
+            } 
             if (Input.GetKeyUp(KeyCode.D))
+            {
+                animator.SetBool("isMoving", false);
+                rb.velocity = new Vector2(0, 0);
+            }
+            if (Input.GetKeyUp(KeyCode.A))
             {
                 animator.SetBool("isMoving", false);
                 rb.velocity = new Vector2(0, 0);
@@ -86,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("isDashing", true);
             
             
-                if (!Boost.Instance.check)
+                if (!check)
                 {
                     Vector2 dashForce = new Vector2(20f, 0);
                     rb.AddForce(dashForce, ForceMode2D.Impulse);
@@ -110,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (!Boost.Instance.check)
+                if (!check)
                 {
                     Vector2 upForce = new Vector2(3, 10);
                     rb.AddForce(upForce, ForceMode2D.Impulse);
@@ -128,9 +170,33 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("isJumping", false);
             }
         }
-        
-        
+    }
+
+    public override void AddCount()
+    {
+        score+=100;
+    }
+
+    IEnumerator AddScore()
+    {
+        while(true)
+        {
+            score++;
+            yield return new WaitForSeconds(.5f);
+        }
+       
     }
   
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "orb")
+        {
+            aud.PlayOneShot(sound);
+            if (!aud.isPlaying)
+            {
+                    
+            }
+        }
+    }
     
 }

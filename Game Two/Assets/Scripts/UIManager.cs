@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI pressE;
     public TextMeshProUGUI batDia;
     public TextMeshProUGUI click;
+    public TextMeshProUGUI score;
     
     public GameObject black;
 
@@ -28,10 +29,12 @@ public class UIManager : MonoBehaviour
     {
         //Debug.Log(Enemy.Instance.dead);
 
+        score.text = "SCORE: " + PlayerMovement.Instance.score;
+
         if (BatEyes.Instance.displayText)
         {
             batDia.text = "Do you hear that? Sounds like trouble! Press shift to run and space to skip. Now... GO";
-            click.text = "Click to begin chase";
+            click.text = "click to begin chase";
         }
 
         if (Enemy.Instance.start)
