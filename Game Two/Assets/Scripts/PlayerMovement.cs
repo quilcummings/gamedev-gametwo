@@ -192,10 +192,6 @@ public class PlayerMovement : WorldManager
         if(col.gameObject.tag == "orb")
         {
             aud.PlayOneShot(sound);
-            if (!aud.isPlaying)
-            {
-                    
-            }
         }
     }
     

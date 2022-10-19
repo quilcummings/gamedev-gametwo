@@ -18,7 +18,6 @@ public class Orb : WorldManager
         target = PlayerMovement.Instance.player.transform;
         player = PlayerMovement.Instance.player;
 
-        
     }
 
     void Update()
@@ -26,8 +25,16 @@ public class Orb : WorldManager
         float dist = Vector2.Distance(PlayerMovement.Instance.transform.position, transform.position);
         if (dist <= 1)
         {
-            PlayerMovement.Instance.score+=100;
-            Destroy(gameObject);
+            if (PlayerMovement.Instance.check)
+            {
+                PlayerMovement.Instance.score+=500;
+            }
+            else
+            {
+                PlayerMovement.Instance.score+=100;
+                Destroy(gameObject);
+            }
+        
         }
     }
 

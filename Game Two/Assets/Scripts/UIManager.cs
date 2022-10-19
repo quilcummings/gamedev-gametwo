@@ -47,9 +47,6 @@ public class UIManager : MonoBehaviour
             black.SetActive(true);
             gameOver.text = "DEATH: INEVITABLE YET UNEXPECTED";
         }
-        else
-        {
-            gameOver.text = "";
-        }
+       
     }
 }

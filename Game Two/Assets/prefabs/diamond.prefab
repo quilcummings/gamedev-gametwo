@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3721510557998183353}
   - component: {fileID: 865532715257781074}
   - component: {fileID: -5253561295095628249}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diamondPF: {fileID: 0}
   aud: {fileID: -5253561295095628249}
-  sound: {fileID: 8300000, guid: 8f64c4a4df3c96c47bb7e31f21170b22, type: 3}
+  sound: {fileID: 8300000, guid: d172749d0cd6fa0469ecccdaf303d7cd, type: 3}
 --- !u!82 &-5253561295095628249
 AudioSource:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8f64c4a4df3c96c47bb7e31f21170b22, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d172749d0cd6fa0469ecccdaf303d7cd, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.49
   m_Pitch: 1
