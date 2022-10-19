@@ -22,13 +22,13 @@ public class PlayerMovement : WorldManager
     public float score;
 
     public bool check;
-    private bool pow=true;
+
+    private bool audPow=true;
 
     public AudioSource aud;
     public AudioClip sound;
 
 
-    
 
     void Awake()
     {
@@ -43,10 +43,10 @@ public class PlayerMovement : WorldManager
     {
         
 
-        if (Enemy.Instance.start && pow)
+        if (Enemy.Instance.start && audPow)
         {
             StartCoroutine(AddScore());
-            pow=false;
+            audPow=false;
         }
         if (Input.GetMouseButtonDown(0) && Enemy.Instance.dead)
         {
@@ -184,7 +184,6 @@ public class PlayerMovement : WorldManager
             score++;
             yield return new WaitForSeconds(.5f);
         }
-       
     }
   
     void OnTriggerEnter2D(Collider2D col)

@@ -20,6 +20,12 @@ public class Enemy : MonoBehaviour
     
     [SerializeField] int speed = 15;
 
+    public AudioSource aud;
+    public AudioClip sound;
+    private bool audPow = true;
+
+    public float dist;
+
     void Awake()
     {
         Instance = this;
@@ -36,6 +42,18 @@ public class Enemy : MonoBehaviour
         {
             start = true;
             StartCoroutine(increaseSpeed());
+        }
+
+        dist = Vector2.Distance(PlayerMovement.Instance.transform.position, transform.position);
+
+        if (dist < speed*3 && audPow && PlayerMovement.Instance.transform.position.x > 30)
+        {
+            aud.PlayOneShot(sound);
+            audPow=false;
+        }
+        if (dist > speed*3+5)
+        {
+            audPow=true;
         }
 
         if (start)
@@ -58,6 +76,7 @@ public class Enemy : MonoBehaviour
     {
         dead = true;
         PlayerMovement.Instance.rb.velocity = new Vector2(0, 0);
+        
     }
     
     IEnumerator increaseSpeed()

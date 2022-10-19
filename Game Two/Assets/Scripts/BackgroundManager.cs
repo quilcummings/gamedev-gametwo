@@ -13,6 +13,7 @@ public class BackgroundManager : WorldManager
     public GameObject ground;
     public GameObject ground2;
     public GameObject platform;
+    public GameObject groundWithLamp;
     //public GameObject block;
 
     private GameObject gr;
@@ -69,9 +70,17 @@ public class BackgroundManager : WorldManager
         else if (bgCount == match)
         {
             xPos = 18.37f * bgCount;
-            GameObject gr = Instantiate(ground, new Vector3(xPos, 0, 0), Quaternion.identity);
-            ground.transform.parent = gr.transform.parent;
-            //bgCount++;
+            if (bgCount % 9 == 0)
+            {
+                GameObject gr = Instantiate(groundWithLamp, new Vector3(xPos, 0, 0), Quaternion.identity);
+                groundWithLamp.transform.parent = gr.transform.parent;
+            }
+            else
+            {
+                GameObject gr = Instantiate(ground, new Vector3(xPos, 0, 0), Quaternion.identity);
+                ground.transform.parent = gr.transform.parent;
+            }
+            
             AddCount();
         }
     }

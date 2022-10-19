@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 343818425721861466, guid: 55a90179a7a384d28bce8340f481c0df, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107799932795899215, guid: 55a90179a7a384d28bce8340f481c0df, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7797937004018469357, guid: 55a90179a7a384d28bce8340f481c0df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8953493266019410276, guid: 55a90179a7a384d28bce8340f481c0df, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8953493266019410278, guid: 55a90179a7a384d28bce8340f481c0df, type: 3}
       propertyPath: m_Name
-      value: Grid (1)
+      value: Grid-hole
       objectReference: {fileID: 0}
     - target: {fileID: 8953493266840020174, guid: 55a90179a7a384d28bce8340f481c0df, type: 3}
       propertyPath: m_Size.y

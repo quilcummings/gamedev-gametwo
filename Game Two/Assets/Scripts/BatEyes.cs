@@ -15,6 +15,10 @@ public class BatEyes : MonoBehaviour
     public float mod = 0.5f;
 
     public bool displayText;
+
+    public AudioSource aud;
+    public AudioClip sound;
+    private bool audPow = true;
     
     void Awake()
     {
@@ -61,6 +65,11 @@ public class BatEyes : MonoBehaviour
         {
             StopAllCoroutines();
             pow = true;
+        }
+        if(Enemy.Instance.dead && audPow)
+        {
+            aud.PlayOneShot(sound);
+            audPow = false;
         }
     }
     
