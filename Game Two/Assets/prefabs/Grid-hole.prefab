@@ -2509,6 +2509,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55a90179a7a384d28bce8340f481c0df, type: 3}
+--- !u!1 &8143574863327163312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8953493266019410278, guid: 55a90179a7a384d28bce8340f481c0df, type: 3}
+  m_PrefabInstance: {fileID: 955599303917310678}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6258643143153473805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8143574863327163312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9d38f00796d48f98e3653dc2ccd331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles: {fileID: 8143574864180278808}
 --- !u!1 &8143574864180278788 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8953493266840020178, guid: 55a90179a7a384d28bce8340f481c0df, type: 3}
@@ -2540,3 +2558,8 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.020008, y: 3.1509867}
   m_EdgeRadius: 0
+--- !u!1839735485 &8143574864180278808 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 8953493266840020174, guid: 55a90179a7a384d28bce8340f481c0df, type: 3}
+  m_PrefabInstance: {fileID: 955599303917310678}
+  m_PrefabAsset: {fileID: 0}
