@@ -23,7 +23,7 @@ public class Orb : WorldManager
     void Update()
     {
         float dist = Vector2.Distance(PlayerMovement.Instance.transform.position, transform.position);
-        if (dist <= 1)
+        if (dist <= 1.5)
         {
             if (PlayerMovement.Instance.check)
             {
@@ -32,6 +32,11 @@ public class Orb : WorldManager
             else
             {
                 PlayerMovement.Instance.score+=100;
+                if (PlayerMovement.Instance.maxSpeed<=35)
+                {
+                    PlayerMovement.Instance.maxSpeed+=1;
+                }
+                PlayerMovement.Instance.aud.PlayOneShot(PlayerMovement.Instance.sound);
                 Destroy(gameObject);
             }
         

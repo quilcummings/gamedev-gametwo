@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     public bool dead = false;
     public bool start = false;
     
-    [SerializeField] int speed = 15;
+    [SerializeField] int speed = 10;
 
     public AudioSource aud;
     public AudioClip sound;
@@ -81,10 +81,10 @@ public class Enemy : MonoBehaviour
     
     IEnumerator increaseSpeed()
     {
-        while(true)
+        while(true && speed<30)
         {
             speed++;
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(5);
         }
     }
 }

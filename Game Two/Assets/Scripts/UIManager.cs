@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI click;
     public TextMeshProUGUI score;
     public TextMeshProUGUI dist;
+    public TextMeshProUGUI click2;
     
     public GameObject black;
 
@@ -34,7 +35,7 @@ public class UIManager : MonoBehaviour
 
         if (BatEyes.Instance.displayText)
         {
-            batDia.text = "Did you hear that? Sounds like trouble! Press shift to run and space to skip. Now... GO";
+            batDia.text = "Did you hear that? Sounds like trouble! Press shift to run and space to jump/accelerate.";
             click.text = "click to begin chase";
         }
 
@@ -44,10 +45,12 @@ public class UIManager : MonoBehaviour
             click.text = "";
             dist.text = "" + Enemy.Instance.dist;
         }
-        if (Enemy.Instance.dead || PlayerMovement.Instance.player.transform.position.y >= 5)
+        if (Enemy.Instance.dead || PlayerMovement.Instance.player.transform.position.y >= 5 || PlayerMovement.Instance.player.transform.position.y <= -9)
         {
             black.SetActive(true);
             gameOver.text = "DEATH: INEVITABLE YET UNEXPECTED";
+            click2.text = "click to reload";
+            Enemy.Instance.dead = true;
         }
        
     }
